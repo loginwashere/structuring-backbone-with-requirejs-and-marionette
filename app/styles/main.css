@@ -1,5 +1,6 @@
+@import "../bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css";
 @import "../bower_components/bootstrap/less/bootstrap.less";
-@import "../bower_components/jquery-ui/themes/base/jquery-ui.css";
+
 body {
     padding-top: 60px; /* 60px to make the container make room for the navigation bar */
 }

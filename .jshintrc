@@ -18,5 +18,10 @@
     "strict": true,
     "trailing": true,
     "smarttabs": true,
-    "jquery": true
+    "jquery": true,
+    "globals"   : {
+        "define": false,
+        "Backbone": false,
+        "Marionette": false
+    }
 }

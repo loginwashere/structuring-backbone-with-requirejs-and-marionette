@@ -1,17 +1,19 @@
-define(["app", "apps/header/list/list_view"], function (ContactManager, View) {
-    ContactManager.module("HeaderApp.List", function (List, ContactManager, Backbone, Marionette, $, _) {
+'use strict';
+
+define(['app', 'apps/header/list/list_view'], function (ContactManager, View) {
+    ContactManager.module('HeaderApp.List', function (List, ContactManager) {
         List.Controller = {
             listHeader: function () {
-                require(["entities/header"], function () {
-                    var links = ContactManager.request("header:entities");
+                require(['entities/header'], function () {
+                    var links = ContactManager.request('header:entities');
                     var headers = new View.Headers({collection: links});
 
-                    headers.on("brand:clicked", function () {
-                        ContactManager.trigger("contacts:list");
+                    headers.on('brand:clicked', function () {
+                        ContactManager.trigger('contacts:list');
                     });
 
-                    headers.on("itemview:navigate", function (childView, model) {
-                        var trigger = model.get("navigationTrigger");
+                    headers.on('itemview:navigate', function (childView, model) {
+                        var trigger = model.get('navigationTrigger');
                         ContactManager.trigger(trigger);
                     });
 
@@ -20,12 +22,12 @@ define(["app", "apps/header/list/list_view"], function (ContactManager, View) {
             },
 
             setActiveHeader: function (headerUrl) {
-                var links = ContactManager.request("header:entities");
+                var links = ContactManager.request('header:entities');
                 var headerToSelect = links.find(function (header) {
-                    return header.get("url") === headerUrl;
+                    return header.get('url') === headerUrl;
                 });
                 headerToSelect.select();
-                links.trigger("reset");
+                links.trigger('reset');
             }
         };
     });

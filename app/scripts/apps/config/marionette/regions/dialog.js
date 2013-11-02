@@ -1,14 +1,16 @@
-define(["marionette", "jquery-ui"], function (Marionette) {
-    Marionette.Region.Dialog = Marionette.Region.extend({
+'use strict';
+
+define(['backbone', 'marionette', 'jquery-ui'], function (Backbone, Marionette) {
+    return Backbone.Marionette.Region.extend({
         onShow: function (view) {
-            this.listenTo(view, "dialog:close", this.closeDialog);
+            this.listenTo(view, 'dialog:close', this.closeDialog);
 
             var self = this;
             this.$el.dialog({
                 modal: true,
                 title: view.title,
-                width: "auto",
-                close: function (e, ui) {
+                width: 'auto',
+                close: function () {
                     self.closeDialog();
                 }
             });
@@ -17,9 +19,7 @@ define(["marionette", "jquery-ui"], function (Marionette) {
         closeDialog: function () {
             this.stopListening();
             this.close();
-            this.$el.dialog("destroy");
+            this.$el.dialog('destroy');
         }
     });
-
-    return Marionette.Region.Dialog;
 });

@@ -1,19 +1,21 @@
-define(["app", "tpl!common/templates/loading.tpl", "spin.jquery"], function (ContactManager, loadingTpl) {
-    ContactManager.module("Common.Views", function (Views, ContactManager, Backbone, Marionette, $, _) {
+'use strict';
+
+define(['app', 'tpl!common/templates/loading.tpl', 'spin.jquery'], function (ContactManager, loadingTpl) {
+    ContactManager.module('Common.Views', function (Views, ContactManager, Backbone, Marionette, $) {
         Views.Loading = Marionette.ItemView.extend({
             template: loadingTpl,
 
             initialize: function (options) {
-                var options = options || {};
-                this.title = options.title || "Loading Data";
-                this.message = options.message || "Please wait, data is loading.";
+                options = options || {};
+                this.title = options.title || 'Loading Data';
+                this.message = options.message || 'Please wait, data is loading.';
             },
 
             serializeData: function () {
                 return {
                     title: this.title,
                     message: this.message
-                }
+                };
             },
 
             onShow: function () {
@@ -25,17 +27,17 @@ define(["app", "tpl!common/templates/loading.tpl", "spin.jquery"], function (Con
                     corners: 1, // Corner roundness (0..1)
                     rotate: 0, // The rotation offset
                     direction: 1, // 1: clockwise, -1: counterclockwise
-                    color: "#000", // #rgb or #rrggbb
+                    color: '#000', // #rgb or #rrggbb
                     speed: 1, // Rounds per second
                     trail: 60, // Afterglow percentage
                     shadow: false, // Whether to render a shadow
                     hwaccel: false, // Whether to use hardware acceleration
-                    className: "spinner", // The CSS class to assign to the spinner
+                    className: 'spinner', // The CSS class to assign to the spinner
                     zIndex: 2e9, // The z-index (defaults to 2000000000)
-                    top: "30px", // Top position relative to parent in px
-                    left: "auto" // Left position relative to parent in px
+                    top: '30px', // Top position relative to parent in px
+                    left: 'auto' // Left position relative to parent in px
                 };
-                $("#spinner").spin(opts);
+                $('#spinner').spin(opts);
             }
         });
     });

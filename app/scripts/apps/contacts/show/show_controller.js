@@ -1,15 +1,17 @@
-define(["app", "apps/contacts/show/show_view"], function (ContactManager, View) {
-    ContactManager.module("ContactsApp.Show", function (Show, ContactManager, Backbone, Marionette, $, _) {
+'use strict';
+
+define(['app', 'apps/contacts/show/show_view'], function (ContactManager, View) {
+    ContactManager.module('ContactsApp.Show', function (Show, ContactManager, Backbone, Marionette, $) {
         Show.Controller = {
             showContact: function (id) {
-                require(["common/views", "entities/contact"], function (CommonViews) {
+                require(['common/views', 'entities/contact'], function (CommonViews) {
                     var loadingView = new CommonViews.Loading({
-                        title: "Artificial Loading Delay",
-                        message: "Data loading is delayed to demonstrate using a loading view."
+                        title: 'Artificial Loading Delay',
+                        message: 'Data loading is delayed to demonstrate using a loading view.'
                     });
                     ContactManager.mainRegion.show(loadingView);
 
-                    var fetchingContact = ContactManager.request("contact:entity", id);
+                    var fetchingContact = ContactManager.request('contact:entity', id);
                     $.when(fetchingContact).done(function (contact) {
                         var contactView;
                         if (contact !== undefined) {
@@ -17,8 +19,8 @@ define(["app", "apps/contacts/show/show_view"], function (ContactManager, View) 
                                 model: contact
                             });
 
-                            contactView.on("contact:edit", function (contact) {
-                                ContactManager.trigger("contact:edit", contact.get("id"));
+                            contactView.on('contact:edit', function (contact) {
+                                ContactManager.trigger('contact:edit', contact.get('id'));
                             });
                         }
                         else {
@@ -29,7 +31,7 @@ define(["app", "apps/contacts/show/show_view"], function (ContactManager, View) 
                     });
                 });
             }
-        }
+        };
     });
 
     return ContactManager.ContactsApp.Show.Controller;
