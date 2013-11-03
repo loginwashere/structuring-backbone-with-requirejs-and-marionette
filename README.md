@@ -1,4 +1,4 @@
-This is fork of @davidsulc explanatory [project](https://github.com/davidsulc/structuring-backbone-with-requirejs-and-marionette)
+This is fork of [@davidsulc](https://github.com/davidsulc) explanatory [project](https://github.com/davidsulc/structuring-backbone-with-requirejs-and-marionette)
 for his book - [using RequireJS with Marionette.js](https://leanpub.com/structuring-backbone-with-requirejs-and-marionette).
 
 I've stumbled upon this project, while I was searching information about building applications with backbone and marionette,
