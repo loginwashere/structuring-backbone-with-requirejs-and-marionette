@@ -21,18 +21,18 @@ define(['app', 'tpl!apps/contacts/common/templates/form.tpl', 'backbone.syphon']
 
                     var clearFormErrors = function () {
                         var $form = $view.find('form');
-                        $form.find('.help-inline.error').each(function () {
+                        $form.find('.help-block.error').each(function () {
                             $(this).remove();
                         });
-                        $form.find('.control-group.error').each(function () {
-                            $(this).removeClass('error');
+                        $form.find('.form-group.has-error').each(function () {
+                            $(this).removeClass('has-error');
                         });
                     };
 
                     var markErrors = function (value, key) {
-                        var $controlGroup = $view.find('#contact-' + key).parent();
-                        var $errorEl = $('<span>', { class: 'help-inline error', text: value });
-                        $controlGroup.append($errorEl).addClass('error');
+                        var $controlGroup = $view.find('#contact-' + key).parents('.form-group');
+                        var $errorEl = $('<span>', { class: 'help-block error', text: value });
+                        $controlGroup.addClass('has-error').append($errorEl);
                     };
 
                     clearFormErrors();
