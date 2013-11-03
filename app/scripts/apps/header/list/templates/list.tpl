@@ -1,9 +1,8 @@
-<div class="navbar-inner">
-    <div class="container">
-        <a class="brand" href="#contacts">Contact manager</a>
-
-        <div class="nav-collapse collapse">
-            <ul class="nav"></ul>
-        </div>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#/contacts">Contact manager</a>
     </div>
-</div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav"></ul>
+    </div>
+</nav>
