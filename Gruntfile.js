@@ -38,9 +38,11 @@ module.exports = function (grunt) {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
             },
-            compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass']
+            'less': {
+                files: [
+                    '<%= yeoman.app %>/styles/{,*/}*.{css}'
+                ],
+                tasks: ['less']
             },
             livereload: {
                 options: {
@@ -48,7 +50,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= yeoman.app %>/*.html',
-                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '.tmp/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}'
@@ -274,18 +276,11 @@ module.exports = function (grunt) {
             }
         },
         less: {
-            default: {
-                options: {
-                    paths: ['<%= yeoman.app %>/styles']
-                },
-                files: {
-                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.css'
-                }
-            },
-            dist: {
+            all: {
                 options: {
                     paths: ['<%= yeoman.app %>/styles'],
-                    strictImports: true
+                    strictImports: true,
+                    syncImport: true
                 },
                 files: {
                     '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.css'
