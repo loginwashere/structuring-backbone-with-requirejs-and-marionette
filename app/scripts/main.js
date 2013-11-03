@@ -20,7 +20,10 @@ require.config({
             deps: ['backbone'],
             exports: 'Marionette'
         },
-        'jquery-ui': ['jquery'],
+        'bootstrap.modal': {
+            deps: ['jquery'],
+            exports: '$.fn.modal'
+        },
         localstorage: ['backbone'],
         'spin.jquery': ['spin', 'jquery']
     },
@@ -30,7 +33,7 @@ require.config({
         underscore: '../bower_components/underscore/underscore',
         'backbone.picky': '../bower_components/backbone.picky/lib/amd/backbone.picky',
         'backbone.syphon': '../bower_components/backbone.syphon/lib/amd/backbone.syphon',
-        'jquery-ui': '../bower_components/jquery-ui/ui/jquery-ui',
+        'bootstrap.modal': '../bower_components/bootstrap/js/modal',
         json2: '../bower_components/json2/json2',
         localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
         marionette: '../bower_components/marionette/lib/backbone.marionette',
