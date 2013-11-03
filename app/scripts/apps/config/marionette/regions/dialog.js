@@ -1,25 +1,22 @@
 'use strict';
 
-define(['backbone', 'marionette', 'jquery-ui'], function (Backbone, Marionette) {
+define(['jquery', 'backbone', 'marionette', 'bootstrap.modal'], function ($, Backbone) {
     return Backbone.Marionette.Region.extend({
+        open: function(view) {
+            this.$el.find('.modal-title').html(view.title);
+            this.$el.find('.modal-body').html(view.el);
+        },
+
         onShow: function (view) {
             this.listenTo(view, 'dialog:close', this.closeDialog);
 
             var self = this;
-            this.$el.dialog({
-                modal: true,
-                title: view.title,
-                width: 'auto',
-                close: function () {
-                    self.closeDialog();
-                }
-            });
+
+            this.$el.modal('show');
         },
 
         closeDialog: function () {
-            this.stopListening();
-            this.close();
-            this.$el.dialog('destroy');
+            this.$el.modal('hide');
         }
     });
 });
